@@ -2,12 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1724">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0">
 
-<title>Gestão QDC V3</title>
+<title>Gestão de Análises</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -15,97 +16,102 @@
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
-    background:#eef2f6;
-    color:#17212b;
+    background:#eef2f5;
+    color:#18212b;
 }
 
 header{
-    background:#0b1724;
-    color:white;
+    background:#071827;
+    color:#fff;
     padding:18px 15px;
     text-align:center;
 }
 
 header h1{
     margin:0;
-    font-size:24px;
+    font-size:23px;
 }
 
 header p{
     margin:6px 0 0;
-    font-size:13px;
     opacity:.8;
+    font-size:13px;
 }
 
 .container{
-    max-width:900px;
+    max-width:1050px;
     margin:auto;
     padding:15px;
 }
 
 .card{
-    background:white;
-    border-radius:14px;
-    padding:18px;
+    background:#fff;
+    border-radius:13px;
+    padding:17px;
     margin-bottom:15px;
     box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
 .card h2{
     margin-top:0;
-    font-size:20px;
+    font-size:19px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:9px;
 }
 
 input,
 select,
 textarea{
     width:100%;
-    padding:13px;
-    margin:7px 0 12px;
+    padding:12px;
+    margin-top:5px;
     border:1px solid #cbd5df;
     border-radius:8px;
     font-size:15px;
+    background:#fff;
 }
 
 textarea{
-    min-height:90px;
+    min-height:85px;
     resize:vertical;
 }
 
 button{
-    width:100%;
     border:0;
-    border-radius:9px;
-    padding:13px;
-    margin-top:7px;
-    font-size:15px;
+    border-radius:8px;
+    padding:12px 15px;
+    margin-top:9px;
     font-weight:bold;
     cursor:pointer;
 }
 
-.btn-primary{
+.btn{
     background:#0b6efd;
-    color:white;
+    color:#fff;
 }
 
-.btn-success{
+.btn-green{
     background:#198754;
-    color:white;
+    color:#fff;
 }
 
-.btn-warning{
-    background:#f0ad00;
-    color:white;
-}
-
-.btn-danger{
+.btn-red{
     background:#dc3545;
-    color:white;
+    color:#fff;
+}
+
+.btn-yellow{
+    background:#f0ad00;
+    color:#fff;
 }
 
 .btn-dark{
     background:#17212b;
-    color:white;
+    color:#fff;
 }
 
 .grid{
@@ -114,39 +120,41 @@ button{
     gap:10px;
 }
 
-.stat{
-    padding:16px;
-    border-radius:12px;
-    background:#f5f7fa;
-    text-align:center;
+@media(max-width:650px){
+    .grid{
+        grid-template-columns:1fr;
+    }
 }
 
-.stat strong{
-    display:block;
-    font-size:27px;
-    margin-bottom:5px;
+.table-wrap{
+    overflow-x:auto;
 }
 
-.qdc{
-    border-left:5px solid #0b6efd;
-    background:#f8fafc;
-    padding:13px;
-    border-radius:8px;
-    margin-bottom:10px;
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
 }
 
-.qdc strong{
-    font-size:17px;
+th,
+td{
+    padding:9px 7px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+    font-size:13px;
 }
 
-.badge{
+th{
+    background:#f1f4f7;
+}
+
+.status{
     display:inline-block;
     padding:5px 8px;
     border-radius:6px;
-    color:white;
-    font-size:12px;
+    color:#fff;
+    font-size:11px;
     font-weight:bold;
-    margin-top:5px;
 }
 
 .normal{
@@ -161,546 +169,543 @@ button{
     background:#dc3545;
 }
 
+.local-box{
+    border-left:5px solid #0b6efd;
+    background:#f8fafc;
+    padding:13px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.analysis-box{
+    border-left:5px solid #198754;
+    background:#f8fafc;
+    padding:13px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.actions button{
+    flex:1;
+    min-width:100px;
+}
+
 .hidden{
     display:none!important;
 }
 
-.login{
-    max-width:420px;
-    margin:45px auto;
-}
-
 .small{
     font-size:12px;
-    color:#66717d;
+    color:#68737d;
 }
 
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:15px;
-}
-
-.topbar button{
-    width:auto;
-    padding:9px 13px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
+.alert{
+    padding:11px;
+    border-radius:8px;
+    background:#fff3cd;
+    color:#664d03;
     margin-top:10px;
 }
 
-th,td{
-    border-bottom:1px solid #ddd;
-    padding:9px 5px;
-    text-align:left;
-    font-size:13px;
+.ok{
+    background:#d1e7dd;
+    color:#0f5132;
+}
+
+.compare-positive{
+    color:#198754;
+    font-weight:bold;
+}
+
+.compare-negative{
+    color:#dc3545;
+    font-weight:bold;
 }
 
 footer{
     text-align:center;
     padding:20px;
-    color:#66717d;
     font-size:12px;
+    color:#68737d;
 }
 
-@media(max-width:600px){
-    .grid{
-        grid-template-columns:1fr 1fr;
+
+/* IMPRESSÃO */
+
+@media print{
+
+    body{
+        background:#fff;
     }
 
-    header h1{
-        font-size:21px;
+    header{
+        color:#000;
+        background:#fff;
+        border-bottom:2px solid #000;
     }
+
+    .no-print,
+    button,
+    select,
+    input,
+    textarea{
+        display:none!important;
+    }
+
+    .card{
+        box-shadow:none;
+        border:1px solid #ccc;
+    }
+
+    .container{
+        max-width:none;
+    }
+
+    .print-area{
+        display:block!important;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>⚡ Gestão QDC V3</h1>
-    <p>Gestão de Quadros de Distribuição</p>
+    <h1>⚡ Gestão de Análises</h1>
+    <p>Histórico • LocalStorage • Comparação • Relatórios</p>
 </header>
-
-<!-- LOGIN -->
-<section id="loginScreen" class="container login">
-
-    <div class="card">
-
-        <h2>🔐 Acesso ao sistema</h2>
-
-        <label>Usuário</label>
-        <input id="usuario" type="text" placeholder="Digite o usuário">
-
-        <label>Senha</label>
-        <input id="senha" type="password" placeholder="Digite a senha">
-
-        <button class="btn-primary" onclick="login()">
-            ENTRAR
-        </button>
-
-        <p id="loginMsg" style="color:#dc3545"></p>
-
-        <hr>
-
-        <p class="small">
-            Sistema demonstrativo local.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- SISTEMA -->
-<section id="systemScreen" class="hidden">
 
 <div class="container">
 
-    <div class="topbar">
 
-        <div>
-            <strong id="usuarioLogado"></strong>
-            <div class="small" id="perfilLogado"></div>
-        </div>
+<!-- CADASTRO DO LOCAL -->
 
-        <button class="btn-danger" onclick="logout()">
-            Sair
-        </button>
+<div class="card">
 
-    </div>
+<h2>📍 1. Local da análise</h2>
 
+<label>Selecionar local existente</label>
 
-    <!-- PAINEL -->
+<select id="selectLocal"
+        onchange="selecionarLocal()">
 
-    <div class="card">
+<option value="">
+Selecione um local
+</option>
 
-        <h2>📊 Painel</h2>
+</select>
 
-        <div class="grid">
+<label>Novo local</label>
 
-            <div class="stat">
-                <strong id="totalQDC">0</strong>
-                QDC cadastrados
-            </div>
+<input id="novoLocal"
+       placeholder="Ex.: Chiller 03 / Sala elétrica">
 
-            <div class="stat">
-                <strong id="totalManutencao">0</strong>
-                Manutenções
-            </div>
+<button class="btn-green"
+        onclick="criarLocal()">
 
-            <div class="stat">
-                <strong id="totalAtencao">0</strong>
-                Atenção
-            </div>
++ CADASTRAR NOVO LOCAL
 
-            <div class="stat">
-                <strong id="totalCritico">0</strong>
-                Críticos
-            </div>
+</button>
 
-        </div>
-
-    </div>
-
-
-    <!-- CADASTRO QDC -->
-
-    <div class="card">
-
-        <h2>⚡ Cadastro de QDC</h2>
-
-        <label>Código do QDC</label>
-        <input id="qdcCodigo" placeholder="Ex.: QDC-001">
-
-        <label>Localização</label>
-        <input id="qdcLocal" placeholder="Ex.: Sala elétrica">
-
-        <label>Setor</label>
-        <input id="qdcSetor" placeholder="Ex.: Produção">
-
-        <label>Tensão</label>
-        <input id="qdcTensao" placeholder="Ex.: 380/220 V">
-
-        <label>Disjuntor geral</label>
-        <input id="qdcDisjuntor" placeholder="Ex.: 125 A">
-
-        <label>Situação</label>
-        <select id="qdcSituacao">
-            <option value="normal">Normal</option>
-            <option value="atencao">Atenção</option>
-            <option value="critico">Crítico</option>
-        </select>
-
-        <label>Observações</label>
-        <textarea id="qdcObs"
-        placeholder="Informações do quadro..."></textarea>
-
-        <button class="btn-success"
-                onclick="cadastrarQDC()">
-            + CADASTRAR QDC
-        </button>
-
-    </div>
-
-
-    <!-- LISTA -->
-
-    <div class="card">
-
-        <h2>📋 QDC cadastrados</h2>
-
-        <div id="listaQDC"></div>
-
-    </div>
-
-
-    <!-- MANUTENÇÃO -->
-
-    <div class="card">
-
-        <h2>🔧 Registrar manutenção</h2>
-
-        <label>QDC</label>
-        <select id="manutQDC"></select>
-
-        <label>Tipo</label>
-        <select id="manutTipo">
-            <option>Preventiva</option>
-            <option>Corretiva</option>
-            <option>Inspeção</option>
-        </select>
-
-        <label>Problema encontrado</label>
-        <textarea id="manutProblema"></textarea>
-
-        <label>Serviço realizado</label>
-        <textarea id="manutServico"></textarea>
-
-        <label>Observação</label>
-        <textarea id="manutObs"></textarea>
-
-        <button class="btn-primary"
-                onclick="registrarManutencao()">
-            REGISTRAR MANUTENÇÃO
-        </button>
-
-    </div>
-
-
-    <!-- HISTÓRICO -->
-
-    <div class="card">
-
-        <h2>📚 Histórico</h2>
-
-        <div id="historico"></div>
-
-    </div>
-
-
-    <!-- ADMIN -->
-
-    <div id="adminArea" class="card hidden">
-
-        <h2>👑 Administração</h2>
-
-        <p>
-            Área exclusiva do administrador.
-        </p>
-
-        <button class="btn-dark"
-                onclick="limparDados()">
-            ⚠ LIMPAR TODOS OS DADOS
-        </button>
-
-    </div>
+<div id="localSelecionado"
+     class="small"
+     style="margin-top:10px">
+Nenhum local selecionado.
+</div>
 
 </div>
 
-</section>
+
+<!-- NOVA ANÁLISE -->
+
+<div class="card">
+
+<h2>📝 2. Nova análise</h2>
+
+<div class="grid">
+
+<div>
+
+<label>Data</label>
+
+<input id="dataAnalise"
+       type="date">
+
+</div>
+
+<div>
+
+<label>Hora</label>
+
+<input id="horaAnalise"
+       type="time">
+
+</div>
+
+</div>
+
+<label>Responsável</label>
+
+<input id="responsavel"
+       placeholder="Nome do técnico">
+
+<label>Equipamento</label>
+
+<input id="equipamento"
+       placeholder="Ex.: Compressor B2">
+
+<label>Identificação</label>
+
+<input id="identificacao"
+       placeholder="Ex.: Chiller 03">
+
+<label>Pressão de descarga</label>
+
+<input id="pressaoDescarga"
+       type="number"
+       step="0.01"
+       placeholder="Ex.: 2143">
+
+<label>Temperatura de descarga (°C)</label>
+
+<input id="tempDescarga"
+       type="number"
+       step="0.1">
+
+<label>Pressão de sucção</label>
+
+<input id="pressaoSuccao"
+       type="number"
+       step="0.01">
+
+<label>Temperatura de sucção (°C)</label>
+
+<input id="tempSuccao"
+       type="number"
+       step="0.1">
+
+<label>Temperatura ambiente (°C)</label>
+
+<input id="tempAmbiente"
+       type="number"
+       step="0.1">
+
+<label>Corrente (A)</label>
+
+<input id="corrente"
+       type="number"
+       step="0.1">
+
+<label>Tensão (V)</label>
+
+<input id="tensao"
+       type="number"
+       step="0.1">
+
+<label>Desbalanceamento (%)</label>
+
+<input id="desbalanceamento"
+       type="number"
+       step="0.01">
+
+<label>Situação</label>
+
+<select id="situacao">
+
+<option value="normal">
+NORMAL
+</option>
+
+<option value="atencao">
+ATENÇÃO
+</option>
+
+<option value="critico">
+CRÍTICO
+</option>
+
+</select>
+
+<label>Observações</label>
+
+<textarea id="observacoes"
+placeholder="Descreva as condições encontradas..."></textarea>
+
+<button class="btn-green"
+        onclick="salvarAnalise()">
+
+💾 SALVAR ANÁLISE
+
+</button>
+
+</div>
+
+
+<!-- HISTÓRICO -->
+
+<div class="card">
+
+<h2>📚 3. Histórico do local</h2>
+
+<div id="historico">
+Selecione um local para visualizar o histórico.
+</div>
+
+</div>
+
+
+<!-- COMPARAÇÃO -->
+
+<div class="card">
+
+<h2>📊 4. Comparação histórica</h2>
+
+<label>Análise anterior</label>
+
+<select id="analiseAnterior">
+<option value="">
+Selecione
+</option>
+</select>
+
+<label>Análise atual</label>
+
+<select id="analiseAtual">
+<option value="">
+Selecione
+</option>
+</select>
+
+<button class="btn"
+        onclick="compararAnalises()">
+
+🔎 COMPARAR
+
+</button>
+
+<div id="resultadoComparacao"
+     style="margin-top:15px">
+
+</div>
+
+</div>
+
+
+<!-- RELATÓRIO -->
+
+<div class="card print-area">
+
+<h2>🖨️ 5. Relatório</h2>
+
+<div id="relatorio">
+Nenhuma análise selecionada.
+</div>
+
+<div class="actions no-print">
+
+<button class="btn-dark"
+        onclick="imprimirAnalise()">
+
+🖨️ IMPRIMIR ANÁLISE
+
+</button>
+
+<button class="btn"
+        onclick="imprimirComparacao()">
+
+🖨️ IMPRIMIR COMPARAÇÃO
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SEGURANÇA -->
+
+<div class="card no-print">
+
+<h2>🔐 Segurança</h2>
+
+<p class="small">
+
+Edição e exclusão exigem senha administrativa.
+
+</p>
+
+</div>
+
+</div>
 
 
 <footer>
-    Gestão QDC V3 — Sistema local
+Gestão de Análises • Dados armazenados localmente
 </footer>
 
 
 <script>
 
-let usuarioAtual = null;
 
-let qdcs =
-JSON.parse(localStorage.getItem("qdcs") || "[]");
+/* =====================================================
+   CONFIGURAÇÃO
+===================================================== */
 
-let manutencoes =
-JSON.parse(localStorage.getItem("manutencoes") || "[]");
+const SENHA_ADMIN = "1234";
 
+const STORAGE_LOCAIS =
+"GESTAO_ANALISES_LOCAIS_V3";
 
-/* USUÁRIOS DE TESTE */
-
-const usuarios = {
-
-    admin:{
-        senha:"1234",
-        perfil:"Administrador"
-    },
-
-    tecnico:{
-        senha:"1234",
-        perfil:"Profissional"
-    },
-
-    visitante:{
-        senha:"1234",
-        perfil:"Visitante"
-    }
-
-};
+const STORAGE_ANALISES =
+"GESTAO_ANALISES_REGISTROS_V3";
 
 
-/* LOGIN */
+/* =====================================================
+   DADOS
+===================================================== */
 
-function login(){
+let locais =
+JSON.parse(
+localStorage.getItem(STORAGE_LOCAIS) || "[]"
+);
 
-    const usuario =
-    document.getElementById("usuario").value.trim();
+let analises =
+JSON.parse(
+localStorage.getItem(STORAGE_ANALISES) || "[]"
+);
 
-    const senha =
-    document.getElementById("senha").value;
+let localAtual = null;
 
-    const msg =
-    document.getElementById("loginMsg");
 
-    if(!usuarios[usuario] ||
-       usuarios[usuario].senha !== senha){
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
 
-        msg.textContent =
-        "Usuário ou senha incorretos.";
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
-        return;
-    }
+    const agora = new Date();
 
-    usuarioAtual = usuario;
+    document.getElementById("dataAnalise")
+    .value =
+    agora.toISOString().split("T")[0];
 
-    document.getElementById("loginScreen")
-    .classList.add("hidden");
+    document.getElementById("horaAnalise")
+    .value =
+    agora.toTimeString().slice(0,5);
 
-    document.getElementById("systemScreen")
-    .classList.remove("hidden");
+    atualizarLocais();
 
-    document.getElementById("usuarioLogado")
-    .textContent =
-    "👤 " + usuario;
+});
 
-    document.getElementById("perfilLogado")
-    .textContent =
-    usuarios[usuario].perfil;
 
-    if(usuario === "admin"){
+/* =====================================================
+   SALVAR LOCALSTORAGE
+===================================================== */
 
-        document.getElementById("adminArea")
-        .classList.remove("hidden");
+function salvarBanco(){
 
-    }
+    localStorage.setItem(
+        STORAGE_LOCAIS,
+        JSON.stringify(locais)
+    );
 
-    if(usuario === "visitante"){
+    localStorage.setItem(
+        STORAGE_ANALISES,
+        JSON.stringify(analises)
+    );
 
-        document
-        .querySelectorAll(
-        ".btn-success,.btn-primary"
-        )
-        .forEach(btn =>
-            btn.classList.add("hidden")
-        );
-
-    }
-
-    atualizarTudo();
 }
 
 
-/* SAIR */
+/* =====================================================
+   CRIAR LOCAL
+===================================================== */
 
-function logout(){
+function criarLocal(){
 
-    usuarioAtual = null;
+    const nome =
+    document.getElementById("novoLocal")
+    .value.trim();
 
-    document
-    .getElementById("systemScreen")
-    .classList.add("hidden");
+    if(!nome){
 
-    document
-    .getElementById("loginScreen")
-    .classList.remove("hidden");
+        alert("Digite o nome do local.");
 
-    document.getElementById("usuario").value="";
-    document.getElementById("senha").value="";
-}
-
-
-/* CADASTRAR QDC */
-
-function cadastrarQDC(){
-
-    if(usuarioAtual === "visitante"){
-        alert("Visitante não pode cadastrar.");
         return;
     }
 
-    const codigo =
-    document.getElementById("qdcCodigo").value.trim();
+    const existe =
+    locais.find(
+        l => l.nome.toLowerCase() ===
+             nome.toLowerCase()
+    );
 
-    if(!codigo){
-        alert("Informe o código do QDC.");
+    if(existe){
+
+        alert("Esse local já existe.");
+
+        selecionarLocalPorId(existe.id);
+
         return;
     }
 
-    const qdc = {
+    const local = {
 
-        id:Date.now(),
+        id:
+        "LOC-" +
+        Date.now(),
 
-        codigo:codigo,
+        nome:nome,
 
-        local:
-        document.getElementById("qdcLocal").value,
-
-        setor:
-        document.getElementById("qdcSetor").value,
-
-        tensao:
-        document.getElementById("qdcTensao").value,
-
-        disjuntor:
-        document.getElementById("qdcDisjuntor").value,
-
-        situacao:
-        document.getElementById("qdcSituacao").value,
-
-        obs:
-        document.getElementById("qdcObs").value,
-
-        data:
+        criadoEm:
         new Date().toLocaleString("pt-BR")
 
     };
 
-    qdcs.push(qdc);
+    locais.push(local);
 
-    salvar();
+    salvarBanco();
 
-    limparCadastro();
+    document.getElementById("novoLocal")
+    .value="";
 
-    atualizarTudo();
+    atualizarLocais();
 
-    alert("QDC cadastrado com sucesso!");
-}
-
-
-/* LIMPAR FORM */
-
-function limparCadastro(){
-
-    [
-        "qdcCodigo",
-        "qdcLocal",
-        "qdcSetor",
-        "qdcTensao",
-        "qdcDisjuntor",
-        "qdcObs"
-    ].forEach(id=>{
-        document.getElementById(id).value="";
-    });
+    selecionarLocalPorId(local.id);
 
 }
 
 
-/* LISTAR QDC */
+/* =====================================================
+   ATUALIZAR LOCAIS
+===================================================== */
 
-function listarQDC(){
-
-    const lista =
-    document.getElementById("listaQDC");
-
-    lista.innerHTML="";
-
-    if(qdcs.length===0){
-
-        lista.innerHTML =
-        "<p>Nenhum QDC cadastrado.</p>";
-
-        return;
-    }
-
-    qdcs.forEach(qdc=>{
-
-        const div =
-        document.createElement("div");
-
-        div.className="qdc";
-
-        div.innerHTML=`
-
-        <strong>⚡ ${qdc.codigo}</strong>
-
-        <br>
-        📍 ${qdc.local || "-"}
-        <br>
-        🏭 ${qdc.setor || "-"}
-        <br>
-        ⚡ ${qdc.tensao || "-"}
-        <br>
-        🔌 Disjuntor: ${qdc.disjuntor || "-"}
-
-        <br>
-
-        <span class="badge ${qdc.situacao}">
-            ${qdc.situacao.toUpperCase()}
-        </span>
-
-        <br><br>
-
-        <small>
-        ${qdc.obs || "Sem observações"}
-        </small>
-
-        <br><br>
-
-        <small>
-        Cadastro: ${qdc.data}
-        </small>
-
-        `;
-
-        lista.appendChild(div);
-
-    });
-
-}
-
-
-/* SELECT QDC */
-
-function atualizarSelect(){
+function atualizarLocais(){
 
     const select =
-    document.getElementById("manutQDC");
+    document.getElementById("selectLocal");
 
-    select.innerHTML="";
+    select.innerHTML =
+    '<option value="">Selecione um local</option>';
 
-    qdcs.forEach(qdc=>{
+    locais.forEach(local=>{
 
         const option =
         document.createElement("option");
 
-        option.value=qdc.id;
+        option.value=local.id;
 
-        option.textContent=qdc.codigo;
+        option.textContent=local.nome;
 
         select.appendChild(option);
 
@@ -709,130 +714,291 @@ function atualizarSelect(){
 }
 
 
-/* MANUTENÇÃO */
+/* =====================================================
+   SELECIONAR LOCAL
+===================================================== */
 
-function registrarManutencao(){
+function selecionarLocal(){
 
-    if(usuarioAtual === "visitante"){
+    const id =
+    document.getElementById("selectLocal")
+    .value;
 
-        alert(
-        "Visitante não pode registrar manutenção."
-        );
+    if(!id){
+
+        localAtual=null;
+
+        document.getElementById(
+            "localSelecionado"
+        ).textContent =
+        "Nenhum local selecionado.";
+
+        document.getElementById(
+            "historico"
+        ).innerHTML =
+        "Selecione um local.";
 
         return;
     }
 
-    if(qdcs.length===0){
+    selecionarLocalPorId(id);
 
-        alert("Cadastre um QDC primeiro.");
+}
+
+
+function selecionarLocalPorId(id){
+
+    localAtual =
+    locais.find(
+        l => l.id === id
+    );
+
+    if(!localAtual)return;
+
+    document.getElementById(
+        "selectLocal"
+    ).value=localAtual.id;
+
+    document.getElementById(
+        "localSelecionado"
+    ).innerHTML =
+    "📍 <b>Local:</b> " +
+    escapeHTML(localAtual.nome);
+
+    atualizarHistorico();
+
+    atualizarSelectAnalises();
+
+}
+
+
+/* =====================================================
+   SALVAR ANÁLISE
+===================================================== */
+
+function salvarAnalise(){
+
+    if(!localAtual){
+
+        alert(
+        "Selecione ou cadastre um local primeiro."
+        );
 
         return;
     }
 
     const registro={
 
-        id:Date.now(),
+        id:
+        "ANA-" +
+        Date.now(),
 
-        qdcId:
-        document.getElementById("manutQDC").value,
+        localId:
+        localAtual.id,
 
-        tipo:
-        document.getElementById("manutTipo").value,
-
-        problema:
-        document.getElementById("manutProblema").value,
-
-        servico:
-        document.getElementById("manutServico").value,
-
-        obs:
-        document.getElementById("manutObs").value,
-
-        tecnico:usuarioAtual,
+        localNome:
+        localAtual.nome,
 
         data:
-        new Date().toLocaleString("pt-BR")
+        document.getElementById(
+            "dataAnalise"
+        ).value,
+
+        hora:
+        document.getElementById(
+            "horaAnalise"
+        ).value,
+
+        responsavel:
+        document.getElementById(
+            "responsavel"
+        ).value,
+
+        equipamento:
+        document.getElementById(
+            "equipamento"
+        ).value,
+
+        identificacao:
+        document.getElementById(
+            "identificacao"
+        ).value,
+
+        pressaoDescarga:
+        valor("pressaoDescarga"),
+
+        tempDescarga:
+        valor("tempDescarga"),
+
+        pressaoSuccao:
+        valor("pressaoSuccao"),
+
+        tempSuccao:
+        valor("tempSuccao"),
+
+        tempAmbiente:
+        valor("tempAmbiente"),
+
+        corrente:
+        valor("corrente"),
+
+        tensao:
+        valor("tensao"),
+
+        desbalanceamento:
+        valor("desbalanceamento"),
+
+        situacao:
+        document.getElementById(
+            "situacao"
+        ).value,
+
+        observacoes:
+        document.getElementById(
+            "observacoes"
+        ).value,
+
+        criadoEm:
+        new Date().toLocaleString("pt-BR"),
+
+        ultimaAlteracao:null
 
     };
 
-    manutencoes.push(registro);
+    analises.push(registro);
 
-    salvar();
+    salvarBanco();
 
-    document.getElementById("manutProblema").value="";
-    document.getElementById("manutServico").value="";
-    document.getElementById("manutObs").value="";
+    atualizarHistorico();
 
-    atualizarTudo();
+    atualizarSelectAnalises();
 
-    alert("Manutenção registrada!");
+    mostrarRelatorio(registro);
+
+    alert(
+    "Análise armazenada no histórico do local."
+    );
+
 }
 
 
-/* HISTÓRICO */
+/* =====================================================
+   PEGAR VALOR
+===================================================== */
 
-function listarHistorico(){
+function valor(id){
+
+    const v =
+    document.getElementById(id).value;
+
+    return v === "" ? null : Number(v);
+
+}
+
+
+/* =====================================================
+   HISTÓRICO
+===================================================== */
+
+function atualizarHistorico(){
 
     const area =
     document.getElementById("historico");
 
-    area.innerHTML="";
-
-    if(manutencoes.length===0){
+    if(!localAtual){
 
         area.innerHTML =
-        "<p>Nenhuma manutenção registrada.</p>";
+        "Selecione um local.";
 
         return;
     }
 
-    [...manutencoes]
-    .reverse()
-    .forEach(m=>{
+    const registros =
+    analises
+    .filter(
+        a => a.localId === localAtual.id
+    )
+    .sort(
+        (a,b) =>
+        new Date(
+            b.data+"T"+b.hora
+        ) -
+        new Date(
+            a.data+"T"+a.hora
+        )
+    );
 
-        const qdc =
-        qdcs.find(q=>q.id==m.qdcId);
+    if(registros.length===0){
+
+        area.innerHTML =
+        '<div class="alert">' +
+        'Nenhuma análise registrada neste local.' +
+        '</div>';
+
+        return;
+    }
+
+    area.innerHTML="";
+
+    registros.forEach(a=>{
 
         const div =
         document.createElement("div");
 
-        div.className="qdc";
+        div.className="analysis-box";
 
         div.innerHTML=`
 
-        <strong>
-        🔧 ${qdc ? qdc.codigo : "QDC removido"}
-        </strong>
+        <b>📅 ${formatarData(a.data)}
+        ${a.hora || ""}</b>
 
         <br>
 
-        Tipo: ${m.tipo}
+        🔧 ${escapeHTML(
+            a.equipamento || "-"
+        )}
 
         <br>
 
-        Técnico: ${m.tecnico}
+        ID:
+        ${escapeHTML(
+            a.identificacao || "-"
+        )}
 
         <br>
 
-        Data: ${m.data}
+        Responsável:
+        ${escapeHTML(
+            a.responsavel || "-"
+        )}
 
-        <hr>
-
-        <b>Problema:</b>
         <br>
-        ${m.problema || "-"}
 
-        <br><br>
+        <span class="status ${a.situacao}">
+        ${a.situacao.toUpperCase()}
+        </span>
 
-        <b>Serviço:</b>
-        <br>
-        ${m.servico || "-"}
+        <div class="actions no-print">
 
-        <br><br>
+        <button
+        class="btn"
+        onclick="verAnalise('${a.id}')">
+        👁 VER
+        </button>
 
-        <b>Observação:</b>
-        <br>
-        ${m.obs || "-"}
+        <button
+        class="btn-yellow"
+        onclick="editarAnalise('${a.id}')">
+        ✏ EDITAR
+        </button>
+
+        <button
+        class="btn-red"
+        onclick="excluirAnalise('${a.id}')">
+        🗑 EXCLUIR
+        </button>
+
+        </div>
 
         `;
 
@@ -843,84 +1009,832 @@ function listarHistorico(){
 }
 
 
-/* PAINEL */
+/* =====================================================
+   SELECT DAS ANÁLISES
+===================================================== */
 
-function atualizarPainel(){
+function atualizarSelectAnalises(){
 
-    document.getElementById("totalQDC")
-    .textContent=qdcs.length;
-
-    document.getElementById("totalManutencao")
-    .textContent=manutencoes.length;
-
-    document.getElementById("totalAtencao")
-    .textContent=
-    qdcs.filter(q=>q.situacao==="atencao").length;
-
-    document.getElementById("totalCritico")
-    .textContent=
-    qdcs.filter(q=>q.situacao==="critico").length;
-
-}
-
-
-/* ATUALIZA TUDO */
-
-function atualizarTudo(){
-
-    listarQDC();
-
-    atualizarSelect();
-
-    listarHistorico();
-
-    atualizarPainel();
-
-}
-
-
-/* SALVAR */
-
-function salvar(){
-
-    localStorage.setItem(
-        "qdcs",
-        JSON.stringify(qdcs)
+    const anterior =
+    document.getElementById(
+        "analiseAnterior"
     );
 
-    localStorage.setItem(
-        "manutencoes",
-        JSON.stringify(manutencoes)
+    const atual =
+    document.getElementById(
+        "analiseAtual"
     );
+
+    anterior.innerHTML =
+    '<option value="">Selecione</option>';
+
+    atual.innerHTML =
+    '<option value="">Selecione</option>';
+
+    if(!localAtual)return;
+
+    const registros =
+    analises.filter(
+        a => a.localId === localAtual.id
+    );
+
+    registros.forEach(a=>{
+
+        const texto =
+        formatarData(a.data) +
+        " " +
+        (a.hora || "") +
+        " — " +
+        (a.equipamento || "Análise");
+
+        const o1 =
+        document.createElement("option");
+
+        o1.value=a.id;
+
+        o1.textContent=texto;
+
+        anterior.appendChild(o1);
+
+
+        const o2 =
+        document.createElement("option");
+
+        o2.value=a.id;
+
+        o2.textContent=texto;
+
+        atual.appendChild(o2);
+
+    });
 
 }
 
 
-/* LIMPAR */
+/* =====================================================
+   COMPARAÇÃO
+===================================================== */
 
-function limparDados(){
+function compararAnalises(){
 
-    if(usuarioAtual!=="admin"){
+    const idAnterior =
+    document.getElementById(
+        "analiseAnterior"
+    ).value;
+
+    const idAtual =
+    document.getElementById(
+        "analiseAtual"
+    ).value;
+
+    if(!idAnterior || !idAtual){
 
         alert(
-        "Somente o administrador pode executar esta ação."
+        "Selecione as duas análises."
         );
 
         return;
     }
 
-    if(confirm(
-    "Tem certeza que deseja apagar todos os dados?"
-    )){
+    if(idAnterior===idAtual){
 
-        qdcs=[];
-        manutencoes=[];
+        alert(
+        "Escolha análises diferentes."
+        );
 
-        salvar();
-
-        atualizarTudo();
-
+        return;
     }
+
+    const anterior =
+    analises.find(
+        a => a.id===idAnterior
+    );
+
+    const atual =
+    analises.find(
+        a => a.id===idAtual
+    );
+
+    if(!anterior || !atual)return;
+
+    const campos=[
+
+        ["Pressão descarga","pressaoDescarga"],
+        ["Temperatura descarga","tempDescarga"],
+        ["Pressão sucção","pressaoSuccao"],
+        ["Temperatura sucção","tempSuccao"],
+        ["Temperatura ambiente","tempAmbiente"],
+        ["Corrente","corrente"],
+        ["Tensão","tensao"],
+        ["Desbalanceamento","desbalanceamento"]
+
+    ];
+
+    let html=`
+
+    <div class="table-wrap">
+
+    <table>
+
+    <thead>
+
+    <tr>
+
+    <th>Parâmetro</th>
+    <th>Anterior</th>
+    <th>Atual</th>
+    <th>Diferença</th>
+    <th>Variação</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody>
+    `;
+
+    campos.forEach(
+    ([nome,campo])=>{
+
+        const v1 =
+        numero(anterior[campo]);
+
+        const v2 =
+        numero(atual[campo]);
+
+        if(v1===null && v2===null){
+
+            return;
+        }
+
+        let diferenca="";
+        let percentual="";
+
+        if(v1!==null && v2!==null){
+
+            const d =
+            v2-v1;
+
+            diferenca =
+            formatarNumero(d);
+
+            if(v1!==0){
+
+                percentual =
+                formatarNumero(
+                    (d/v1)*100
+                ) + "%";
+
+            }
+
+        }
+
+        html+=`
+
+        <tr>
+
+        <td>
+        <b>${nome}</b>
+        </td>
+
+        <td>
+        ${formatarNumero(v1)}
+        </td>
+
+        <td>
+        ${formatarNumero(v2)}
+        </td>
+
+        <td>
+        ${diferenca}
+        </td>
+
+        <td>
+        ${percentual}
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+    html+=`
+
+    </tbody>
+
+    </table>
+
+    </div>
+
+    <div class="alert ok">
+
+    <b>Local:</b>
+    ${escapeHTML(atual.localNome)}
+
+    <br>
+
+    <b>Análise anterior:</b>
+    ${formatarData(anterior.data)}
+    ${anterior.hora || ""}
+
+    <br>
+
+    <b>Análise atual:</b>
+    ${formatarData(atual.data)}
+    ${atual.hora || ""}
+
+    </div>
+
+    `;
+
+    document.getElementById(
+        "resultadoComparacao"
+    ).innerHTML=html;
+
+}
+
+
+/* =====================================================
+   VER ANÁLISE
+===================================================== */
+
+function verAnalise(id){
+
+    const a =
+    analises.find(
+        x => x.id===id
+    );
+
+    if(!a)return;
+
+    mostrarRelatorio(a);
+
+}
+
+
+/* =====================================================
+   RELATÓRIO
+===================================================== */
+
+function mostrarRelatorio(a){
+
+    const area =
+    document.getElementById(
+        "relatorio"
+    );
+
+    area.innerHTML=`
+
+    <h3>
+    📍 ${escapeHTML(a.localNome)}
+    </h3>
+
+    <p>
+    <b>Data:</b>
+    ${formatarData(a.data)}
+    ${a.hora || ""}
+    </p>
+
+    <p>
+    <b>Responsável:</b>
+    ${escapeHTML(a.responsavel || "-")}
+    </p>
+
+    <p>
+    <b>Equipamento:</b>
+    ${escapeHTML(a.equipamento || "-")}
+    </p>
+
+    <p>
+    <b>Identificação:</b>
+    ${escapeHTML(a.identificacao || "-")}
+    </p>
+
+    <table>
+
+    <tr>
+    <th>Parâmetro</th>
+    <th>Valor</th>
+    </tr>
+
+    ${linha("Pressão descarga",a.pressaoDescarga)}
+    ${linha("Temperatura descarga",a.tempDescarga,"°C")}
+    ${linha("Pressão sucção",a.pressaoSuccao)}
+    ${linha("Temperatura sucção",a.tempSuccao,"°C")}
+    ${linha("Temperatura ambiente",a.tempAmbiente,"°C")}
+    ${linha("Corrente",a.corrente,"A")}
+    ${linha("Tensão",a.tensao,"V")}
+    ${linha("Desbalanceamento",a.desbalanceamento,"%")}
+
+    </table>
+
+    <p>
+    <b>Situação:</b>
+    ${a.situacao.toUpperCase()}
+    </p>
+
+    <p>
+    <b>Observações:</b><br>
+    ${escapeHTML(a.observacoes || "-")}
+    </p>
+
+    <hr>
+
+    <small>
+    Registro: ${a.criadoEm}
+    </small>
+
+    `;
+
+}
+
+
+function linha(nome,valor,unidade=""){
+
+    return `
+
+    <tr>
+
+    <td>${nome}</td>
+
+    <td>
+    ${formatarNumero(numero(valor))}
+    ${unidade}
+    </td>
+
+    </tr>
+
+    `;
+
+}
+
+
+/* =====================================================
+   EDITAR
+===================================================== */
+
+function editarAnalise(id){
+
+    if(!pedirSenha())return;
+
+    const a =
+    analises.find(
+        x => x.id===id
+    );
+
+    if(!a)return;
+
+    document.getElementById(
+        "dataAnalise"
+    ).value=a.data || "";
+
+    document.getElementById(
+        "horaAnalise"
+    ).value=a.hora || "";
+
+    document.getElementById(
+        "responsavel"
+    ).value=a.responsavel || "";
+
+    document.getElementById(
+        "equipamento"
+    ).value=a.equipamento || "";
+
+    document.getElementById(
+        "identificacao"
+    ).value=a.identificacao || "";
+
+    preencher("pressaoDescarga",a.pressaoDescarga);
+    preencher("tempDescarga",a.tempDescarga);
+    preencher("pressaoSuccao",a.pressaoSuccao);
+    preencher("tempSuccao",a.tempSuccao);
+    preencher("tempAmbiente",a.tempAmbiente);
+    preencher("corrente",a.corrente);
+    preencher("tensao",a.tensao);
+    preencher("desbalanceamento",a.desbalanceamento);
+
+    document.getElementById(
+        "situacao"
+    ).value=a.situacao;
+
+    document.getElementById(
+        "observacoes"
+    ).value=a.observacoes || "";
+
+    /* marca para atualização */
+
+    window.editandoId=id;
+
+    alert(
+    "Análise carregada para edição. " +
+    "Altere os dados e clique em SALVAR ALTERAÇÃO."
+    );
+
+    alterarBotaoSalvar();
+
+}
+
+
+function preencher(id,valor){
+
+    document.getElementById(id).value =
+    valor===null ||
+    valor===undefined ?
+    "" :
+    valor;
+
+}
+
+
+/* =====================================================
+   BOTÃO SALVAR / ALTERAR
+===================================================== */
+
+function alterarBotaoSalvar(){
+
+    const botoes =
+    document.querySelectorAll(
+        "button"
+    );
+
+    botoes.forEach(b=>{
+
+        if(
+            b.textContent.includes(
+                "SALVAR ANÁLISE"
+            )
+        ){
+
+            b.textContent =
+            "💾 SALVAR ALTERAÇÃO";
+
+            b.onclick =
+            salvarEdicao;
+
+        }
+
+    });
+
+}
+
+
+function restaurarBotaoSalvar(){
+
+    const botoes =
+    document.querySelectorAll(
+        "button"
+    );
+
+    botoes.forEach(b=>{
+
+        if(
+            b.textContent.includes(
+                "SALVAR ALTERAÇÃO"
+            )
+        ){
+
+            b.textContent =
+            "💾 SALVAR ANÁLISE";
+
+            b.onclick =
+            salvarAnalise;
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   SALVAR EDIÇÃO
+===================================================== */
+
+function salvarEdicao(){
+
+    if(!window.editandoId)return;
+
+    const a =
+    analises.find(
+        x => x.id===window.editandoId
+    );
+
+    if(!a)return;
+
+    a.data =
+    document.getElementById(
+        "dataAnalise"
+    ).value;
+
+    a.hora =
+    document.getElementById(
+        "horaAnalise"
+    ).value;
+
+    a.responsavel =
+    document.getElementById(
+        "responsavel"
+    ).value;
+
+    a.equipamento =
+    document.getElementById(
+        "equipamento"
+    ).value;
+
+    a.identificacao =
+    document.getElementById(
+        "identificacao"
+    ).value;
+
+    a.pressaoDescarga =
+    valor("pressaoDescarga");
+
+    a.tempDescarga =
+    valor("tempDescarga");
+
+    a.pressaoSuccao =
+    valor("pressaoSuccao");
+
+    a.tempSuccao =
+    valor("tempSuccao");
+
+    a.tempAmbiente =
+    valor("tempAmbiente");
+
+    a.corrente =
+    valor("corrente");
+
+    a.tensao =
+    valor("tensao");
+
+    a.desbalanceamento =
+    valor("desbalanceamento");
+
+    a.situacao =
+    document.getElementById(
+        "situacao"
+    ).value;
+
+    a.observacoes =
+    document.getElementById(
+        "observacoes"
+    ).value;
+
+    a.ultimaAlteracao =
+    new Date().toLocaleString("pt-BR");
+
+    salvarBanco();
+
+    window.editandoId=null;
+
+    restaurarBotaoSalvar();
+
+    atualizarHistorico();
+
+    atualizarSelectAnalises();
+
+    mostrarRelatorio(a);
+
+    alert(
+    "Alteração salva no histórico."
+    );
+
+}
+
+
+/* =====================================================
+   EXCLUIR
+===================================================== */
+
+function excluirAnalise(id){
+
+    if(!pedirSenha())return;
+
+    const a =
+    analises.find(
+        x => x.id===id
+    );
+
+    if(!a)return;
+
+    const confirmar =
+    confirm(
+        "Excluir esta análise?\n\n" +
+        "Local: " +
+        a.localNome +
+        "\nData: " +
+        formatarData(a.data)
+    );
+
+    if(!confirmar)return;
+
+    analises =
+    analises.filter(
+        x => x.id!==id
+    );
+
+    salvarBanco();
+
+    atualizarHistorico();
+
+    atualizarSelectAnalises();
+
+    document.getElementById(
+        "relatorio"
+    ).innerHTML =
+    "Nenhuma análise selecionada.";
+
+}
+
+
+/* =====================================================
+   SENHA
+===================================================== */
+
+function pedirSenha(){
+
+    const senha =
+    prompt(
+        "Digite a senha para continuar:"
+    );
+
+    if(senha===null)return false;
+
+    if(senha!==SENHA_ADMIN){
+
+        alert("Senha incorreta.");
+
+        return false;
+    }
+
+    return true;
+
+}
+
+
+/* =====================================================
+   IMPRESSÃO
+===================================================== */
+
+function imprimirAnalise(){
+
+    window.print();
+
+}
+
+
+function imprimirComparacao(){
+
+    const resultado =
+    document.getElementById(
+        "resultadoComparacao"
+    ).innerHTML;
+
+    if(!resultado){
+
+        alert(
+        "Faça uma comparação primeiro."
+        );
+
+        return;
+    }
+
+    const janela =
+    window.open(
+        "",
+        "_blank"
+    );
+
+    janela.document.write(`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+    <meta charset="UTF-8">
+
+    <title>Comparação histórica</title>
+
+    <style>
+
+    body{
+        font-family:Arial;
+        padding:25px;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+    }
+
+    th,td{
+        border:1px solid #555;
+        padding:8px;
+    }
+
+    th{
+        background:#eee;
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <h1>📊 Comparação Histórica</h1>
+
+    ${resultado}
+
+    </body>
+
+    </html>
+
+    `);
+
+    janela.document.close();
+
+    janela.focus();
+
+    janela.print();
+
+}
+
+
+/* =====================================================
+   UTILITÁRIOS
+===================================================== */
+
+function numero(v){
+
+    if(
+        v===null ||
+        v===undefined ||
+        v===""
+    ){
+        return null;
+    }
+
+    const n=Number(v);
+
+    return Number.isFinite(n)
+        ? n
+        : null;
+
+}
+
+
+function formatarNumero(v){
+
+    if(v===null)return "—";
+
+    return Number(v)
+    .toLocaleString(
+        "pt-BR",
+        {
+            maximumFractionDigits:2
+        }
+    );
+
+}
+
+
+function formatarData(data){
+
+    if(!data)return "—";
+
+    const partes =
+    data.split("-");
+
+    if(partes.length!==3)
+        return data;
+
+    return (
+        partes[2] +
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0]
+    );
+
+}
+
+
+function escapeHTML(text){
+
+    if(text===null ||
+       text===undefined)
+       return "";
+
+    return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
